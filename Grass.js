@@ -1,4 +1,5 @@
-class Grass extends LivingCreature {
+let LivingCreature = require("./base")
+module.exports = class Grass extends LivingCreature {
 
     newDirections() {
         this.directions = [

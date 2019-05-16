@@ -1,4 +1,5 @@
-class Amenaker {
+let LivingCreature = require("./base")
+module.exports = class Amenaker extends LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;

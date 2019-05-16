@@ -1,4 +1,5 @@
-class Eatgrass {
+let LivingCreature = require("./base")
+module.exports = class Eatgrass extends LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -43,7 +44,7 @@ class Eatgrass {
     move() {
 
         var fundCords = this.getDirections(0);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
 
         if (cord) {
             var x = cord[0];
