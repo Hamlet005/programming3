@@ -1,11 +1,12 @@
-let LivingCreature = require("./base")
-module.exports = class Vorsord extends LivingCreature {
+let random = require("./random")
+
+module.exports = class Vorsord {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.multiply = 0;
         this.energy = 30;
-        this.directions = [];
+        this.directions =[];
     }
 
     newDirections() {
@@ -28,7 +29,7 @@ module.exports = class Vorsord extends LivingCreature {
             [this.x - 2, this.y + 1],
             [this.x - 2, this.y + 2],
             [this.x - 1, this.y + 2],
-            [this.x, this.y + 2],
+            [this.x, this.y + 2],           
             [this.x + 1, this.y + 2],
             [this.x + 2, this.y + 2],
             [this.x + 2, this.y + 1],
@@ -53,8 +54,8 @@ module.exports = class Vorsord extends LivingCreature {
     }
 
     move() {
-        var fundCords = this.getDirections(0);
-        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
+       var fundCords = this.getDirections(0);
+        var cord = random(fundCords);
 
         if (cord) {
             var x = cord[0];
@@ -71,10 +72,10 @@ module.exports = class Vorsord extends LivingCreature {
 
 
     eat() {
-
+        
         var fundCords2 = this.getDirections(2);
         var fundCords = this.getDirections(3);
-        fundCords = fundCords.concat(fundCords2)
+        fundCords=fundCords.concat(fundCords2)
         var cord = random(fundCords);
 
         if (cord) {
@@ -95,12 +96,12 @@ module.exports = class Vorsord extends LivingCreature {
                 if (x == gishArr[i].x && y == gishArr[i].y) {
                     gishArr.splice(i, 1);
                 }
-            }
+            }           
             for (var i in eatArr) {
                 if (x == eatArr[i].x && y == eatArr[i].y) {
                     eatArr.splice(i, 1);
                 }
-            }
+            }  
             if (this.multiply == 20) {
                 this.mul()
                 this.multiply = 0;
@@ -111,7 +112,7 @@ module.exports = class Vorsord extends LivingCreature {
 
             this.move();
             this.energy--;
-            if (this.energy <= 0) {
+            if (this.energy <= 0) { 
                 this.die();
             }
         }
@@ -124,7 +125,7 @@ module.exports = class Vorsord extends LivingCreature {
         var cord = random(fundCords);
 
 
-        if (cord) {
+        if (cord){
             var x = cord[0];
             var y = cord[1];
 
@@ -133,10 +134,10 @@ module.exports = class Vorsord extends LivingCreature {
 
             matrix[y][x] = 4;
 
-        }
+        } 
     }
 
-    լ
+
     die() {
 
         matrix[this.y][this.x] = 0;

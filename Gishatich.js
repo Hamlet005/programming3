@@ -1,11 +1,12 @@
-let LivingCreature = require("./base")
-module.exports = class Gishatich extends LivingCreature {
+let random = require("./random")
+
+module.exports = class Gishatich {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.multiply = 0;
         this.energy = 30;
-        this.directions = [];
+        this.directions =[];
     }
 
     newDirections() {
@@ -38,7 +39,7 @@ module.exports = class Gishatich extends LivingCreature {
 
     move() {
         var fundCords = this.getDirections(0);
-        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
+        var cord = random(fundCords);
 
         if (cord) {
             var x = cord[0];
@@ -77,7 +78,7 @@ module.exports = class Gishatich extends LivingCreature {
                 if (x == eatArr[i].x && y == eatArr[i].y) {
                     eatArr.splice(i, 1);
                 }
-            }
+            }           
 
             if (this.multiply == 20) {
                 this.mul()
@@ -89,7 +90,7 @@ module.exports = class Gishatich extends LivingCreature {
 
             this.move();
             this.energy--;
-            if (this.energy <= 0) {
+            if (this.energy <= 0) { 
                 this.die();
             }
         }
@@ -102,7 +103,7 @@ module.exports = class Gishatich extends LivingCreature {
         var cord = random(fundCords);
 
 
-        if (cord) {
+        if (cord){
             var x = cord[0];
             var y = cord[1];
 
@@ -111,10 +112,9 @@ module.exports = class Gishatich extends LivingCreature {
 
             matrix[y][x] = 3;
 
-        }
+        } 
     }
 
-    լ
     die() {
 
         matrix[this.y][this.x] = 0;

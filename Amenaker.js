@@ -1,11 +1,12 @@
-let LivingCreature = require("./base")
-module.exports = class Amenaker extends LivingCreature {
+let random = require("./random")
+
+module.exports = class Amenaker {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.multiply = 0;
         this.energy = 30;
-        this.directions = [];
+        this.directions =[];
     }
 
     newDirections() {
@@ -28,7 +29,7 @@ module.exports = class Amenaker extends LivingCreature {
             [this.x - 2, this.y + 1],
             [this.x - 2, this.y + 2],
             [this.x - 1, this.y + 2],
-            [this.x, this.y + 2],
+            [this.x, this.y + 2],           
             [this.x + 1, this.y + 2],
             [this.x + 2, this.y + 2],
             [this.x + 2, this.y + 1],
@@ -53,7 +54,7 @@ module.exports = class Amenaker extends LivingCreature {
     }
 
     move() {
-        var fundCords = this.getDirections(0);
+       var fundCords = this.getDirections(0);
         var cord = random(fundCords);
 
         if (cord) {
@@ -71,12 +72,12 @@ module.exports = class Amenaker extends LivingCreature {
 
 
     eat() {
-
+        
         var fundCords2 = this.getDirections(2);
         var fundCords = this.getDirections(1);
         var fundCords1 = this.getDirections(4);
-        fundCords = fundCords.concat(fundCords2)
-        fundCords = fundCords.concat(fundCords1)
+        fundCords=fundCords.concat(fundCords2)
+        fundCords=fundCords.concat(fundCords1)
         var cord = random(fundCords);
 
         if (cord) {
@@ -93,19 +94,19 @@ module.exports = class Amenaker extends LivingCreature {
                 if (x == xotArr[i].x && y == xotArr[i].y) {
                     xotArr.splice(i, 1);
                 }
-            }
+            }           
 
             for (var i in eatArr) {
                 if (x == eatArr[i].x && y == eatArr[i].y) {
                     eatArr.splice(i, 1);
                 }
-            }
-
+            }  
+            
             for (var i in vorsArr) {
                 if (x == vorsArr[i].x && y == vorsArr[i].y) {
                     vorsArr.splice(i, 1);
                 }
-            }
+            }  
             if (this.multiply == 35) {
                 this.mul()
                 this.multiply = 0;
@@ -116,7 +117,7 @@ module.exports = class Amenaker extends LivingCreature {
 
             this.move();
             this.energy--;
-            if (this.energy <= 0) {
+            if (this.energy <= 0) { 
                 this.die();
             }
         }
@@ -129,7 +130,7 @@ module.exports = class Amenaker extends LivingCreature {
         var cord = random(fundCords);
 
 
-        if (cord) {
+        if (cord){
             var x = cord[0];
             var y = cord[1];
 
@@ -138,10 +139,10 @@ module.exports = class Amenaker extends LivingCreature {
 
             matrix[y][x] = 5;
 
-        }
+        } 
     }
 
-    լ
+
     die() {
 
         matrix[this.y][this.x] = 0;
